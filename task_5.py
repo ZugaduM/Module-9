@@ -1,14 +1,16 @@
-import random
-
-
 def is_prime(func):
   def wraper(*args):
     temp_var = func(*args)
-    i = random.randint(1, 10)
-    if temp_var % 1 == 0 and temp_var % temp_var == 0 and temp_var % i == 0:
-      return "Составное число"
+    variants = 0
+    for i in range(2, temp_var):
+        if temp_var % 1 == 0 and temp_var % temp_var == 0:
+            if temp_var != i and temp_var % i == 0:
+                variants += 1
+                
+    if variants > 2:
+        return f"Составное число\n{temp_var}"
     else:
-      return "Простое число"
+        return f"Простое число\n{temp_var}"
   return wraper
   
 
